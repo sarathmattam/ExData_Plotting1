@@ -13,16 +13,16 @@ subSetData <- transform(subSetData, TimeStamp = strptime(paste(Date, Time, sep="
 # setting frame to plot
 par(mfrow=c(2,2))
 #plot1
-plot(subSetData$TimeStamp, subSetData$Global_active_power, type = "l", xlab="", ylab="Global Active Power (kilowatts)")
+plot(subSetData$TimeStamp, as.numeric(as.character(subSetData$Global_active_power)), type = "l", xlab="", ylab="Global Active Power (kilowatts)")
 #plot2
-plot(subSetData$TimeStamp, subSetData$Voltage, type = "l", xlab = "datetime", ylab = "Global Active Power (kilowatts)")
+plot(subSetData$TimeStamp, as.numeric(as.character(subSetData$Voltage)), type = "l", xlab = "datetime", ylab = "Voltage")
 #plot3
-with(subSetData, plot(TimeStamp, Sub_metering_1, type = "n", xlab="Energy Sub Metering", ylab="Global Active Power (kilowatts)"))
+with(subSetData, plot(TimeStamp, Sub_metering_1, type = "n", xlab="", ylab="Energy Sub Metering"))
 points(subSetData$TimeStamp, as.numeric(as.character(subSetData$Sub_metering_1)), type = "l")
 points(subSetData$TimeStamp, as.numeric(as.character(subSetData$Sub_metering_2)), type = "l", col = "red")
 points(subSetData$TimeStamp, as.numeric(as.character(subSetData$Sub_metering_3)), type = "l", col = "blue")
 #plot4
-plot(subSetData$TimeStamp, as.numeric(as.character(subSetData$Global_reactive_power)), type = "l", xlab = "datetime", ylab = "Global Active Power (kilowatts)")
+plot(subSetData$TimeStamp, as.numeric(as.character(subSetData$Global_reactive_power)), type = "l", xlab = "datetime", ylab = "Global_reactive_power")
 #copying plotted graph to png file
 dev.copy(png, file="plot4.png", height=480, width=480)
 # closing connection with external plotting device

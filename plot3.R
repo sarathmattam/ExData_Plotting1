@@ -11,7 +11,7 @@ rm("powerData")
 # transforming data to create Timestamp field
 subSetData <- transform(subSetData, TimeStamp = strptime(paste(Date, Time, sep=" "), "%Y-%m-%d %H:%M:%S"))
 # plotting with data points
-with(subSetData, plot(TimeStamp, Sub_metering_1, type = "n", xlab="", ylab="Global Active Power (kilowatts)"))
+with(subSetData, plot(TimeStamp, Sub_metering_1, type = "n", xlab="", ylab="Energy Sub Metering"))
 points(subSetData$TimeStamp, as.numeric(as.character(subSetData$Sub_metering_1)), type = "l")
 points(subSetData$TimeStamp, as.numeric(as.character(subSetData$Sub_metering_2)), type = "l", col = "red")
 points(subSetData$TimeStamp, as.numeric(as.character(subSetData$Sub_metering_3)), type = "l", col = "blue")
